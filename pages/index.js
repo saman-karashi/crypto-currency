@@ -1,9 +1,18 @@
+import SearchBox from "../components/SearchBox"
 import Table from "../components/Table"
+import {useState} from 'react'
 
 export default function Home({data}) {
+const [search,setSearch] = useState('');
+
+const searchHandler =(e)=>{
+setSearch(e.target.value);
+}
+
   return (
-    <div className="container mx-auto max-w-[1200px] p-5 ">
-      <Table currencies={data} />
+    <div className="container mx-auto max-w-[1200px]">
+      <SearchBox searchHandler={searchHandler} />
+      <Table currencies={data} search={search.toLowerCase()} />
     </div>
   )
 }
