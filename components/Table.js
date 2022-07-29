@@ -3,7 +3,7 @@ import Currencies from './Currencies';
 
 const Table = ({currencies,search}) => {
   return (
-    <table className='w-full'>
+    <table className='w-full overflow-hidden dark:rounded-lg dark:bg-white dark:text-black '>
         <thead>
             <tr className='text-sm border-y'>
                 <th className='text-left p-2'></th>
@@ -19,7 +19,7 @@ const Table = ({currencies,search}) => {
         .filter(currency => currency.name.toLowerCase().includes(search))
         .map((currency)=>{
             return(
-            <Currencies {...currency} />
+            <Currencies {...currency} key={currency.market_cap_rank} />
             )
         })}
         </tbody>

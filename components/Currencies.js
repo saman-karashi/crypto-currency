@@ -6,7 +6,7 @@ const classPercentage = price_change_percentage_24h > 0 ? 'text-green-400' : 'te
 const threeDigitsSeperated = market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   
 return (
-    <tr key={rank} className='border-b transition-all duration-300 hover:bg-slate-100/90 cursor-pointer'>
+    <tr key={rank} className='dark:text-black border-b transition-all duration-300 hover:bg-slate-100/90 cursor-pointer'>
         <td className='px-2'>
                 <Star />
         </td>
