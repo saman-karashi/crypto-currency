@@ -1,12 +1,21 @@
 import React from 'react'
-import {Star,ChevronDown,ChevronUp} from '../icons/icons'
+import {Star,ChevronDown,ChevronUp} from '../icons/icons';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
-const Currencies = ({market_cap_rank:rank,symbol,price_change_percentage_24h,name,image,current_price:price,market_cap}) => {
+const Currencies = ({id,market_cap_rank:rank,symbol,price_change_percentage_24h,name,image,current_price:price,market_cap}) => {
 const classPercentage = price_change_percentage_24h > 0 ? 'text-green-400' : 'text-red-400' 
 const threeDigitsSeperated = market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  
+const router = useRouter()  
+
+const clickHandler = ()=>{
+router.push(`/${id}`)
+}
+
+
 return (
-    <tr key={rank} className='dark:text-black border-b transition-all duration-300 hover:bg-slate-100/90 cursor-pointer'>
+    <tr onClick={clickHandler} key={rank} className='dark:text-black border-b transition-all duration-300 hover:bg-slate-100/90 cursor-pointer'>
         <td className='px-2'>
                 <Star />
         </td>
@@ -14,7 +23,7 @@ return (
         <td className='px-2 py-5 font-semibold'>
             <div className='flex items-center'>
                 <div className='mr-2'>
-                    <img alt={name} src={image} width={25} height={25} />
+                    <Image alt={name} src={image} width={25} height={25} />
                 </div>
                 <span className='whitespace-nowrap'>
                     {name}

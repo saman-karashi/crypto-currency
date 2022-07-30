@@ -1,7 +1,8 @@
 import SearchBox from "../components/SearchBox"
 import Table from "../components/Table"
 import {useState} from 'react'
-import ThemeToggler from "../src/ThemeToggler";
+import Layout from "../components/Layout";
+import Head from "next/head";
 
 export default function Home({data}) {
 const [search,setSearch] = useState('');
@@ -11,11 +12,11 @@ setSearch(e.target.value);
 }
 
   return (
-    <div className="container mx-auto max-w-[1200px]">
-      <ThemeToggler />
+    <>
+
       <SearchBox searchHandler={searchHandler} />
       <Table currencies={data} search={search.toLowerCase()} />
-    </div>
+    </>
   )
 }
 
